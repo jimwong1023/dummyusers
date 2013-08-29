@@ -38,9 +38,9 @@ get '/create_user' do
 end
 
 post '/create_user' do
-  user = User.new(params[:user])
+  user = User.create(params[:user])
   
-  if user.save
+  if user.valid?
     session[:user_id] = user.id
     redirect '/secrete_page'
   else
